@@ -26,6 +26,16 @@
 ![输入图片说明](https://oscimg.oschina.net/oscnet/up-d17725dd17943561ae20f13048e53db6da1.jpg)
 ## 演示环境
 
+<table>
+    <tr>
+        <td>使用手机扫一扫体验</td>
+    </tr>
+<tr>
+        <td><img src="https://oscimg.oschina.net/oscnet/up-d9868b9c7be3beeda8982a0e928ae9beb86.png"/></td>
+    </tr>
+
+</table>
+
 ### 管理后台
 访问地址：[http://47.93.123.204/](http://47.93.123.204/)  
 账号：admin  
