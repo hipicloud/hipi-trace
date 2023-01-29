@@ -10,6 +10,10 @@
 <img src='https://gitee.com/hipicloud/HipiTrace/badge/star.svg?theme=dark' alt='star'></img>
 </a>
 
+<a align="center" href='https://github.com/hipicloud/hipi-trace'>
+<img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/HipiCloud/hipi-trace?style=social"></img>
+</a>
+
 </p>
 
 <h4 align="center">开源溯源防伪系统、一物一码系统，适用于各种溯源场景的大、中、小、微规模企业的商用级溯源防伪系统</h4>
