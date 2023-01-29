@@ -1,0 +1,73 @@
+package com.hipi.code.domain;
+
+import com.baomidou.mybatisplus.annotation.*;
+import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * <p>
+ * 供应商管理表
+ * </p>
+ *
+ * @author hipi
+ * @since 2022-07-19
+ */
+@TableName(value = "tb_supplier_manage", autoResultMap = true)
+@ApiModel(value = "SupplierManage对象", description = "供应商管理表")
+@Data
+public class SupplierManage implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    @ApiModelProperty("主键")
+    @TableId(value = "id", type = IdType.ASSIGN_ID)
+    private String id;
+
+    @ApiModelProperty("供应商目录编码")
+    private String supplierCatalogueCode;
+
+    @ApiModelProperty("供应商目录id")
+    private String supplierCatalogueId;
+
+    @TableField(exist = false)
+    @ApiModelProperty("供应商目录名称")
+    private String supplierCatalogueName;
+
+    @ApiModelProperty("供应商编码")
+    private String supplierCode;
+
+    @ApiModelProperty("供应商名称")
+    private String supplierName;
+
+    @ApiModelProperty("逻辑删除")
+    @TableLogic
+    private Integer delFlag;
+
+    @ApiModelProperty("创建人")
+    @TableField(fill = FieldFill.INSERT)
+    private String createBy;
+
+    @ApiModelProperty("创建时间")
+    @TableField(fill = FieldFill.INSERT)
+    private LocalDateTime createTime;
+
+    @ApiModelProperty("更新时间")
+    @TableField(update = "now()", fill = FieldFill.INSERT_UPDATE)
+    private LocalDateTime updateTime;
+
+    @TableField(typeHandler = JacksonTypeHandler.class)
+    @ApiModelProperty(value = "字段数据JSON")
+    private Map<String, Object> dataJson;
+
+    @ApiModelProperty("表单字段")
+    @TableField(exist = false)
+    private List<CatalogueForm> catalogueFormList;
+
+}

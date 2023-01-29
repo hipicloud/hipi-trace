@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hipi.code.mapper.TraceQrCodeMapper">
+
+    <select id="selectListPage" resultType="com.hipi.code.domain.vo.TraceQrLogVO">
+        select
+        ttqc.qr_code,
+        ttc.batch_code,
+        ttb.status,
+        tcm.category_name
+        from
+        tb_trace_qr_code ttqc left join tb_trace_code ttc on ttqc.code_id = ttc.code_id
+        left join tb_trace_batch ttb on ttc.batch_code = ttb.batch_code
+        left join tb_category_manage tcm on ttb.category_manage_id = tcm.id
+
+        <where>
+            <if test="traceQrQuery.categoryName != null and traceQrQuery.categoryName != ''">
+                and tcm.category_name like CONCAT(CONCAT('%',#{traceQrQuery.categoryName}),'%')
+            </if>
+            <if test="traceQrQuery.batchCode != null and traceQrQuery.batchCode != ''">
+                and ttc.batch_code like CONCAT(CONCAT('%',#{traceQrQuery.batchCode}),'%')
+            </if>
+        </where>
+        limit #{traceQrQuery.current}, #{traceQrQuery.size}
+    </select>
+    <select id="selectTotal" resultType="java.lang.Long">
+        select
+        count(1)
+        from
+        tb_trace_qr_code ttqc left join tb_trace_code ttc on ttqc.code_id = ttc.code_id
+        left join tb_trace_batch ttb on ttc.batch_code = ttb.batch_code
+        left join tb_category_manage tcm on ttb.category_manage_id = tcm.id
+        <where>
+            <if test="traceQrQuery.categoryName != null and traceQrQuery.categoryName != ''">
+                and tcm.category_name like CONCAT(CONCAT('%',#{traceQrQuery.categoryName}),'%')
+            </if>
+            <if test="traceQrQuery.batchCode != null and traceQrQuery.batchCode != ''">
+                and ttc.batch_code like CONCAT(CONCAT('%',#{traceQuery.batchCode}),'%')
+            </if>
+        </where>
+    </select>
+</mapper>

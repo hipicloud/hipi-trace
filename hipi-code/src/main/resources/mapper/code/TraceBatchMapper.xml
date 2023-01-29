@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hipi.code.mapper.TraceBatchMapper">
+
+    <select id="selectTraceBatchList" resultType="com.hipi.code.domain.TraceBatch">
+        select *
+        from tb_trace_batch
+        where category_manage_id = #{categoryBatchQuery.categoryManageId}
+    </select>
+    <select id="page" resultType="com.hipi.code.domain.TraceBatch">
+        select batch.*,
+        cm.category_name as category_manage_name,
+        IF(code.genNumber is null, 0, code.genNumber) as gen_code_number,
+        (select qc.qr_code
+        from tb_trace_code tc
+        inner join tb_trace_qr_code qc on tc.code_id = qc.code_id
+        where tc.batch_code = batch.batch_code
+        limit 1) qr_code
+        from tb_trace_batch batch
+        left join tb_category_manage cm on batch.category_manage_id = cm.id
+        left join (select batch_code, sum(gen_number) as genNumber from tb_trace_code group by batch_code) code
+        on batch.batch_code = code.batch_code
+        <where>
+            <if test="list != null">
+                <foreach collection="list" item="item" separator="," open="batch.category_manage_id in (" close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </select>
+</mapper>

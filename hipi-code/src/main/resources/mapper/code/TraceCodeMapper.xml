@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hipi.code.mapper.TraceCodeMapper">
+
+    <select id="selectListPage" resultType="com.hipi.code.domain.vo.TraceCodeVO">
+        select
+        tcm.category_name,
+        ttc.batch_code,
+        tdm.distributor_name,
+        ttc.code_type,
+        ttc.char_length,
+        ttc.char_type,
+        ttc.gen_number
+        from tb_trace_code ttc left outer join tb_category_manage tcm on ttc.category_manage_id = tcm.id
+        left join tb_distributor_manage tdm on ttc.distributor_manage_id = tdm.id
+        <where>
+            <if test="traceQuery.categoryName != null and traceQuery.categoryName != ''">
+                and tcm.category_name like CONCAT(CONCAT('%',#{traceQuery.categoryName}),'%')
+            </if>
+            <if test="traceQuery.batchCode != null and traceQuery.batchCode != ''">
+                and ttc.batch_code like CONCAT(CONCAT('%',#{traceQuery.batchCode}),'%')
+            </if>
+        </where>
+        limit #{traceQuery.current}, #{traceQuery.size}
+    </select>
+    <select id="selectTotal" resultType="java.lang.Long">
+        select
+        count(1)
+        from tb_trace_code ttc left outer join tb_category_manage tcm on ttc.category_manage_id = tcm.id
+        left join tb_distributor_manage tdm on ttc.distributor_manage_id = tdm.id
+        <where>
+            <if test="traceQuery.categoryName != null and traceQuery.categoryName != ''">
+                and tcm.category_name like CONCAT(CONCAT('%',#{traceQuery.categoryName}),'%')
+            </if>
+            <if test="traceQuery.batchCode != null and traceQuery.batchCode != ''">
+                and ttc.batch_code like CONCAT(CONCAT('%',#{traceQuery.batchCode}),'%')
+            </if>
+        </where>
+    </select>
+    <select id="listCode" resultType="com.hipi.code.domain.dto.BatchCodeExportDTO">
+        select qc.qr_code as code_url
+        from tb_trace_code tc
+                 inner join tb_trace_qr_code qc on tc.code_id = qc.code_id
+        where tc.batch_code = #{batchCode}
+    </select>
+</mapper>
