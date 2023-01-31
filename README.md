@@ -28,10 +28,23 @@
 
 <table>
     <tr>
-        <td>使用手机扫一扫体验</td>
+        <td colspan="6">使用手机扫一扫体验</td>
     </tr>
-<tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-d9868b9c7be3beeda8982a0e928ae9beb86.png"/></td>
+    <tr>
+        <td>苹果溯源（示例）</td>
+        <td>贵州织金竹荪溯源（示例）</td>
+        <td>五常大米溯源（示例）</td>
+        <td>白酒溯源（示例）</td>
+        <td>首饰溯源（示例）</td>
+        <td>化妆品溯源（示例）</td>
+    </tr>
+    <tr>
+        <td><img src="https://oscimg.oschina.net/oscnet/up-2108483ec632ed61688b688e9da63ebf316.png"/></td>
+        <td><img src="https://oscimg.oschina.net/oscnet/up-cc0d0a5167025564f418c94b1616c1f8474.png"/></td>
+        <td><img src="https://oscimg.oschina.net/oscnet/up-8bc213c5342127dfb64e4451b005a7f9291.png"/></td>
+        <td>敬请期待</td>
+        <td>敬请期待</td>
+        <td>敬请期待</td>
     </tr>
 
 </table>
