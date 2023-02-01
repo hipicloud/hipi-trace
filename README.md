@@ -14,15 +14,31 @@
 <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/HipiCloud/hipi-trace?style=social"></img>
 </a>
 
+
 </p>
 
 <h4 align="center">开源溯源防伪系统、一物一码系统，适用于各种溯源场景的大、中、小、微规模企业的商用级溯源防伪系统</h4>
+
+## 开源说明
+##### 嗨皮云溯源防伪一物一码系统开源版遵循[GPL-3.0](https://github.com/hipicloud/hipi-trace/blob/main/LICENSE)协议，并提供技术交流学习，但绝不允许修改后和衍生的代码做为闭源的商业软件发布和销售！ 
+##### 如果需要将本产品在本地进行任何附带商业化性质行为使用，请联系项目负责人进行商业授权，以遵守 GPL 协议保证您的正常使用。
 
 
 ## 系统介绍
 开源溯源防伪系统、一物一码系统，适用于各种溯源场景的大、中、小、微规模企业的商用级溯源防伪系统。可追踪记录产品的生命周期各个环节，把产品的环节信息保存在系统中，品牌保护、产品营销、防止假冒伪劣产品、防窜货、产品追踪溯源。应用的场景领域：快销品行业、种植行业、养殖行业、畜牧行业、加工行业、仓储行业、零售行业等。
 
-## 应用场景
+### 系统功能
+*   **基础管理** ：品类目录管理、供应商目录管理、渠道商目录管理、溯源环节目录管理；
+*   **品类管理** ：品类管理；
+*   **供应商管理** ：供应商管理；
+*   **渠道商管理** ：渠道商管理；
+*   **溯源环节管理** ：溯源环节管理；
+*   **批次管理** ：批次管理；
+*   **二维码管理** ：生码管理、生码记录；
+
+
+
+### 应用场景
 ![输入图片说明](https://oscimg.oschina.net/oscnet/up-d17725dd17943561ae20f13048e53db6da1.jpg)
 ## 演示环境
 
@@ -68,29 +84,18 @@
         <td><img src="https://oscimg.oschina.net/oscnet/up-117a9fc2ecdfe931de68c9a15019c15d785.png"/></td>
     </tr>
 <tr>
-        <td><img src="https://oscimg.oschina.net/oscnet/up-383e2afba1889cc46b22721328cd4571781.jpg"/></td>
+        <td colspan="2"><img src="https://oscimg.oschina.net/oscnet/up-383e2afba1889cc46b22721328cd4571781.jpg"/></td>
     </tr>
 </table>
 
-## 技术选型
-系统环境  
-Java EE 8  
-Servlet 3.0  
-Apache Maven 3
+## 技术栈
 
-2、主框架  
-Spring Boot 2.2.x  
-Spring Framework 5.2.x  
-Apache Shiro 1.7
+本项目使用[RuoYi-Vue](https://gitee.com/y_project/RuoYi-Vue)作为后端开发框架，感谢作者的开源。  
+本项目使用[RuoYi-Antdv](https://gitee.com/fuzui/RuoYi-Antdv)作为前端开发框架，感谢作者的开源。
 
-3、持久层  
-Apache MyBatis 3.5.x  
-Hibernate Validation 6.0.x  
-Alibaba Druid 1.2.x
+> RuoYi-Vue是基于SpringBoot，Spring Security，JWT，Vue 的前后端分离权限管理系统。
 
-4、视图层  
-Bootstrap 3.3.7  
-Thymeleaf 3.0.x
+> 拥有用户管理、部门管理、岗位管理、菜单管理、角色管理、字典管理、参数管理、通知公告、操作日志、登录日志、在线用户、定时任务、代码生成、系统接口、服务监控、在线构建器、连接池监视等功能。
 
 ## 联系我们
 ### QQ群交流
