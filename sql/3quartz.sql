@@ -1,3 +1,8 @@
+USE hipi_trace;
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
 DROP TABLE IF EXISTS qrtz_fired_triggers;
 DROP TABLE IF EXISTS qrtz_paused_trigger_grps;
 DROP TABLE IF EXISTS qrtz_scheduler_state;
