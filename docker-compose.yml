@@ -1,0 +1,53 @@
+# 使用说明 V1.0.0
+# 1. 使用docker-compose  宿主机不需要配置host来发现
+# 2. 无需修改源码，根目录  docker-compose up 即可
+# 3. 静静等待服务启动
+
+version: '2'
+services:
+  hipi-trace-mysql:
+    build:
+      context: ./sql
+    environment:
+      MYSQL_ROOT_PASSWORD: Root@1234
+    restart: always
+    container_name: hipi-trace-mysql
+    image: hipi-trace-mysql
+    #ports:
+     # - 3306:3306
+    volumes:
+      - ./hipi-trace-mysql:/var/lib/mysql
+    command: --lower_case_table_names=1
+    network_mode: host
+
+  hipi-trace-redis:
+    container_name: hipi-trace-redis
+    image: redis:5.0.7
+    restart: always
+    #ports:
+    #  - 6379:6379
+    network_mode: host
+
+  hipi-trace-admin:
+    image: registry.cn-hangzhou.aliyuncs.com/hipicloud/hipi-trace:v1.0.0
+    restart: always
+    container_name: hipi-trace-admin
+    #ports:
+     # - 8080:8080
+    depends_on:
+      - hipi-trace-mysql
+      - hipi-trace-redis
+    network_mode: host
+
+  hipi-trace-ui:
+    image: registry.cn-hangzhou.aliyuncs.com/hipicloud/hipi-trace-ui:v1.0.0
+    restart: always
+    container_name: hipi-trace-ui
+    #ports:
+     # - 80:80
+    depends_on:
+      - hipi-trace-admin
+    network_mode: host
+networks:
+  front:
+    driver: hipi-network
